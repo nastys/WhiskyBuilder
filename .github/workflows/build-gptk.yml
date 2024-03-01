@@ -36,6 +36,14 @@ jobs:
           ln -s /usr/local/Cellar/game-porting-toolkit-compiler/0.1/ /usr/local/opt/game-porting-toolkit-compiler
       - name: Install taps
         run: brew install whisky/apple/game-porting-toolkit winetricks || true
+      - name: Tar Logs
+        run: |
+          tar -zcf gptkLogs.tar.gz /Users/runner/Library/Logs/Homebrew/game-porting-toolkit
+      - name: Upload Logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: gptkLogs
+          path: gptkLogs.tar.gz
       - name: Trim Files
         run: |
           rm -rf $(brew --prefix game-porting-toolkit)/.brew
