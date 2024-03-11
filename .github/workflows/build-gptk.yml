@@ -2,8 +2,6 @@ name: Build GPTK
 on:
   workflow_dispatch:
   push:
-  schedule:
-    - cron: "0 19 * * *"
 jobs:
   build_gptk:
     name: Build GPTK
